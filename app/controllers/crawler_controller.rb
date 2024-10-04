@@ -39,15 +39,15 @@ class CrawlerController < ApplicationController
   end
 
   def word_count(title)
-    title.split(/\s+/).reject { |word| word.match?(/^\W+$/) }.count
+    title.split(/\s+/).grep_v(/^\W+$/).count
   end
 
   def filter_and_sort_entries(entries)
     more_than_five_words = entries.select { |entry| entry[:word_count] > 5 }
-                                  .sort_by { |entry| -entry[:comments] }
+      .sort_by { |entry| -entry[:comments] }
 
     five_or_less_words = entries.select { |entry| entry[:word_count] <= 5 }
-                                .sort_by { |entry| -entry[:points] }
+      .sort_by { |entry| -entry[:points] }
 
     [more_than_five_words, five_or_less_words]
   end
