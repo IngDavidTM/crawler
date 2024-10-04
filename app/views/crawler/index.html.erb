@@ -1,2 +1,18 @@
-<h1>Crawler#index</h1>
-<p>Find me in app/views/crawler/index.html.erb</p>
+<nav>
+  <div>
+    <button id="show-comments-filtered" class="btn" style="display: block;">Filter by comments > 5 Words</button>
+    <button id="show-points-filtered" class="btn" style="display: block;">Filter by points ≤ 5 Words</button>
+    <button id="show-all" class="btn" style="display: none;">Show all</button>
+  </div>
+</nav>
+
+<h1>Hacker News Web Crawler</h1>
+
+<h2 id="title-entries">Top 30 Entries</h2>
+<%= render partial: 'entries_table', locals: { entries: @entries, id: 'entries-table' } %>
+
+<h2 id="title-comments" style="display: none;">Entries with more than 5 words (Ordered by comments)</h2>
+<%= render partial: 'entries_table', locals: { entries: @more_than_five_words, id: 'comments-table' }%>
+
+<h2 id="title-points" style="display: none;">Entries with 5 or less words (Ordered by points)</h2>
+<%= render partial: 'entries_table', locals: { entries: @five_or_less_words, id: 'points-table' } %>
