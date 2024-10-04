@@ -1,0 +1,25 @@
+<table id="<%= id %>">
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Title</th>
+      <th>Points</th>
+      <th>Comments</th>
+      <th>Number of words</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% entries.each do |entry| %>
+      <tr>
+        <td><%= entry[:number] %></td>
+        <td><%= entry[:title] %></td>
+        <td><%= entry[:points] %></td>
+        <td>
+          <%= "#{entry[:comments]}" %>
+          <%= entry[:comments] == 1 ? "comment" : "comments" %>
+        </td>
+        <td><%= entry[:word_count] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
